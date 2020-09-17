@@ -1,0 +1,25 @@
+{
+  "name": "ebski/http-client",
+  "version": "0.1.0",
+  "description": "Client used to communicate through HTTP with other projects",
+  "keywords": ["curl", "http", "http-client"],
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ebbe Vig Nielsen",
+      "email": "Ebski91@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Ebski\\HttpClient\\": "src/"
+    }
+  },
+  "require": {
+    "php": "^7.1",
+    "guzzlehttp/guzzle": "7.0.*",
+    "ext-json": "*",
+    "ext-curl": "*"
+  }
+}
