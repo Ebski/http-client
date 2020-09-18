@@ -1,4 +1,4 @@
-## Image Compressor
+## Http Client
 This library can be used to connect through HTTP to other projects.
 It's build based on [guzzlehttp/guzzle](https://packagist.org/packages/guzzlehttp/guzzle) library
 and functions as a wrapper to quickly setup the main functionality a http-client needs.
