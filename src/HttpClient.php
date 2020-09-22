@@ -14,10 +14,7 @@ use GuzzleHttp\Psr7\Response;
  */
 abstract class HttpClient
 {
-    /**
-     * @var HttpClientConfiguration
-     */
-    private $configuration;
+    private HttpClientConfiguration $configuration;
 
     /**
      * @param HttpClientConfiguration $configuration
@@ -102,9 +99,10 @@ abstract class HttpClient
                 $request->getHttpMethod(),
                 $response->getStatusCode(),
                 $this->configuration->getBaseUri(),
-                $this->configuration->getUrl(),
+                $this->configureUrl($request->getEndpoint()),
                 $responseTime
             );
+            $this->handleDebugLogMessage($message);
         }
     }
 

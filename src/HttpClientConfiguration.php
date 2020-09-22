@@ -10,41 +10,35 @@ namespace Ebski\HttpClient;
 class HttpClientConfiguration
 {
     /**
-     * @var string The base URI where each request is sent
+     * The base URI where each request is sent
      */
-    private $baseUri;
+    private string $baseUri;
 
     /**
-     * @var array Base options for the client
+     * Base options for the client
      */
-    private $baseOptions;
+    private array $baseOptions;
 
     /**
-     * @var array Base headers for the client
+     * Base headers for the client
      */
-    private $baseHeaders;
+    private array $baseHeaders;
 
     /**
      * How long each request should wait before a timeout
      * Default value 0 is to wait indefinitely
-     *
-     * @var float
      */
-    private $timeout;
+    private float $timeout;
 
     /**
      * Whether or not a request should be debugged
-     *
-     * @var bool
      */
-    private $debug;
+    private bool $debug;
 
     /**
      * The name the client is shown while debugging
-     *
-     * @var string
      */
-    private $clientName;
+    private string $clientName;
 
     /**
      * @param string $baseUri

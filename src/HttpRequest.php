@@ -11,30 +11,13 @@ use Closure;
  */
 class HttpRequest
 {
-    /**
-     * @var string
-     */
-    private $httpMethod;
+    private string $httpMethod;
 
-    /**
-     * @var string
-     */
-    private $endpoint;
+    private string $endpoint;
 
-    /**
-     * @var array
-     */
-    private $options;
+    private array $options;
 
-    /**
-     * @var array
-     */
-    private $headers;
-
-    /**
-     * @var Closure|null
-     */
-    private $callback;
+    private array $headers;
 
     /**
      * @param string $httpMethod
@@ -42,21 +25,18 @@ class HttpRequest
      * @param array $queryParams
      * @param array $options
      * @param array $headers
-     * @param Closure|null $callback
      */
     public function __construct(
         string $httpMethod,
         string $endpoint,
         array $queryParams = [],
         array $options = [],
-        array $headers = [],
-        Closure $callback = null
+        array $headers = []
     ) {
         $this->httpMethod = $httpMethod;
         $this->endpoint = sprintf('%s?%s', $endpoint, http_build_query($queryParams));
         $this->options = $options;
         $this->headers = $headers;
-        $this->callback = $callback;
     }
 
     /**
@@ -73,14 +53,6 @@ class HttpRequest
     public function getEndpoint(): string
     {
         return $this->endpoint;
-    }
-
-    /**
-     * @return array
-     */
-    public function getQueryParams(): array
-    {
-        return $this->queryParams;
     }
 
     /**
@@ -113,13 +85,5 @@ class HttpRequest
     public function setHeaders(array $headers): void
     {
         $this->headers = $headers;
-    }
-
-    /**
-     * @return Closure|null
-     */
-    public function getCallback(): ?Closure
-    {
-        return $this->callback;
     }
 }
