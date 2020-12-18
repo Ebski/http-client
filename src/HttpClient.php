@@ -14,15 +14,12 @@ use GuzzleHttp\Psr7\Response;
  */
 abstract class HttpClient
 {
-    private HttpClientConfiguration $configuration;
-
     /**
      * @param HttpClientConfiguration $configuration
      */
-    public function __construct(HttpClientConfiguration $configuration)
-    {
-        $this->configuration = $configuration;
-    }
+    public function __construct(
+        private HttpClientConfiguration $configuration
+    ) {}
 
     /**
      * Overridable request function
@@ -30,7 +27,7 @@ abstract class HttpClient
      * @param HttpRequest $request
      * @return mixed
      */
-    public function request(HttpRequest $request)
+    public function request(HttpRequest $request): mixed
     {
         return $this->sendRequest($request);
     }
@@ -39,7 +36,7 @@ abstract class HttpClient
      * @param HttpRequest $request
      * @return mixed
      */
-    protected function sendRequest(HttpRequest $request)
+    protected function sendRequest(HttpRequest $request): mixed
     {
         $url = $this->configureUrl($request->getEndpoint());
         $request->setOptions(array_merge($request->getOptions(), $this->configuration->getBaseOptions()));
@@ -140,5 +137,5 @@ abstract class HttpClient
      * @param Response $response
      * @return mixed
      */
-    protected abstract function handleResponse(Response $response);
+    protected abstract function handleResponse(Response $response): mixed;
 }

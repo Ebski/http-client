@@ -10,59 +10,21 @@ namespace Ebski\HttpClient;
 class HttpClientConfiguration
 {
     /**
-     * The base URI where each request is sent
-     */
-    private string $baseUri;
-
-    /**
-     * Base options for the client
-     */
-    private array $baseOptions;
-
-    /**
-     * Base headers for the client
-     */
-    private array $baseHeaders;
-
-    /**
-     * How long each request should wait before a timeout
-     * Default value 0 is to wait indefinitely
-     */
-    private float $timeout;
-
-    /**
-     * Whether or not a request should be debugged
-     */
-    private bool $debug;
-
-    /**
-     * The name the client is shown while debugging
-     */
-    private string $clientName;
-
-    /**
-     * @param string $baseUri
-     * @param array $baseOptions
-     * @param array $baseHeaders
-     * @param float $timeout
-     * @param bool $debug
-     * @param string $clientName
+     * @param string $baseUri The base URI where each request is sent
+     * @param array $baseOptions Base options for the client
+     * @param array $baseHeaders Base headers for the client
+     * @param float $timeout How long each request should wait before a timeout. 0 is to wait indefinitely
+     * @param bool $debug Whether or not a request should be debugged
+     * @param string $clientName The name the client is shown while debugging
      */
     public function __construct(
-        string $baseUri,
-        array $baseOptions = [],
-        array $baseHeaders = [],
-        float $timeout = 0,
-        bool $debug = false,
-        string $clientName = 'client'
-    ) {
-        $this->baseUri = $baseUri;
-        $this->baseOptions = $baseOptions;
-        $this->baseHeaders = $baseHeaders;
-        $this->timeout = $timeout;
-        $this->debug = $debug;
-        $this->clientName = $clientName;
-    }
+        private string $baseUri,
+        private array $baseOptions = [],
+        private array $baseHeaders = [],
+        private float $timeout = 0,
+        private bool $debug = false,
+        private string $clientName = 'client'
+    ) {}
 
     /**
      * @return string

@@ -2,8 +2,6 @@
 
 namespace Ebski\HttpClient;
 
-use Closure;
-
 /**
  * Class HttpRequest
  *
@@ -11,14 +9,6 @@ use Closure;
  */
 class HttpRequest
 {
-    private string $httpMethod;
-
-    private string $endpoint;
-
-    private array $options;
-
-    private array $headers;
-
     /**
      * @param string $httpMethod
      * @param string $endpoint
@@ -27,16 +17,13 @@ class HttpRequest
      * @param array $headers
      */
     public function __construct(
-        string $httpMethod,
-        string $endpoint,
+        private string $httpMethod,
+        private string $endpoint,
         array $queryParams = [],
-        array $options = [],
-        array $headers = []
+        private array $options = [],
+        private array $headers = []
     ) {
-        $this->httpMethod = $httpMethod;
         $this->endpoint = sprintf('%s?%s', $endpoint, http_build_query($queryParams));
-        $this->options = $options;
-        $this->headers = $headers;
     }
 
     /**
